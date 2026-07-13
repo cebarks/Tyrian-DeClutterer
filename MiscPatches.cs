@@ -1,4 +1,4 @@
-﻿using Aki.Reflection.Patching;
+﻿using SPT.Reflection.Patching;
 using EFT;
 using EFT.Interactive;
 using HarmonyLib;
@@ -11,7 +11,7 @@ namespace Framesaver
         public static bool everyOtherFixedUpdate = false;
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(GClass570), "Update");
+            return AccessTools.Method(typeof(EFTPhysicsClass), "Update");
         }
 
         [PatchPrefix]
@@ -20,8 +20,8 @@ namespace Framesaver
             everyOtherFixedUpdate = !everyOtherFixedUpdate;
             if (everyOtherFixedUpdate)
             {
-                GClass570.GClass571.Update();
-                GClass570.GClass572.Update();
+                EFTPhysicsClass.SyncTransformsClass.Update();
+                EFTPhysicsClass.GClass745.Update();
             }
             return false;
         }
@@ -31,7 +31,7 @@ namespace Framesaver
         public static bool everyOtherFixedUpdate = false;
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(GClass570), "FixedUpdate");
+            return AccessTools.Method(typeof(EFTPhysicsClass), "FixedUpdate");
         }
 
         [PatchPrefix]
@@ -40,7 +40,7 @@ namespace Framesaver
             everyOtherFixedUpdate = !everyOtherFixedUpdate;
             if (everyOtherFixedUpdate)
             {
-                GClass570.GClass571.FixedUpdate();
+                EFTPhysicsClass.SyncTransformsClass.FixedUpdate();
             }
             return false;
         }
@@ -59,7 +59,7 @@ namespace Framesaver
             everyOtherFixedUpdate = !everyOtherFixedUpdate;
             if (everyOtherFixedUpdate)
             {
-                GClass570.SyncTransforms();
+                EFTPhysicsClass.SyncTransforms();
             }
             return false;
         }
