@@ -16,7 +16,7 @@ using Koenigz.PerfectCulling.EFT;
 
 namespace TYR_DeClutterer
 {
-    [BepInPlugin("com.TYR.DeClutter", "TYR_DeClutter", "1.1.5")]
+    [BepInPlugin("com.TYR.DeClutter", "TYR_DeClutter", "2.0.0")]
     public class DeClutter : BaseUnityPlugin
     {
         private static GameWorld gameWorld;
@@ -236,14 +236,12 @@ namespace TYR_DeClutterer
                     {
                         new SkyDelayUpdatesPatch().Enable();
                         new WeatherLateUpdatePatch().Enable();
-                        new CloudsControllerDelayUpdatesPatch().Enable();
                         new WeatherEventControllerDelayUpdatesPatch().Enable();
                     }
                     else
                     {
                         new SkyDelayUpdatesPatch().Disable();
                         new WeatherLateUpdatePatch().Disable();
-                        new CloudsControllerDelayUpdatesPatch().Disable();
                         new WeatherEventControllerDelayUpdatesPatch().Disable();
                     }
                     if (framesaverFireAndSmokeEnabledConfig.Value)
@@ -274,7 +272,6 @@ namespace TYR_DeClutterer
                     new AmbientLightDisableLateUpdatesPatch().Disable();
                     new SkyDelayUpdatesPatch().Disable();
                     new WeatherLateUpdatePatch().Disable();
-                    new CloudsControllerDelayUpdatesPatch().Disable();
                     new WeatherEventControllerDelayUpdatesPatch().Disable();
                     new FlameDamageTriggerPatch().Disable();
                 }
@@ -439,14 +436,12 @@ namespace TYR_DeClutterer
                     {
                         new SkyDelayUpdatesPatch().Enable();
                         new WeatherLateUpdatePatch().Enable();
-                        new CloudsControllerDelayUpdatesPatch().Enable();
                         new WeatherEventControllerDelayUpdatesPatch().Enable();
                     }
                     else
                     {
                         new SkyDelayUpdatesPatch().Disable();
                         new WeatherLateUpdatePatch().Disable();
-                        new CloudsControllerDelayUpdatesPatch().Disable();
                         new WeatherEventControllerDelayUpdatesPatch().Disable();
                     }
                     if (framesaverFireAndSmokeEnabledConfig.Value)
@@ -477,7 +472,6 @@ namespace TYR_DeClutterer
                     new AmbientLightDisableLateUpdatesPatch().Disable();
                     new SkyDelayUpdatesPatch().Disable();
                     new WeatherLateUpdatePatch().Disable();
-                    new CloudsControllerDelayUpdatesPatch().Disable();
                     new WeatherEventControllerDelayUpdatesPatch().Disable();
                     new FlameDamageTriggerPatch().Disable();
                 }
