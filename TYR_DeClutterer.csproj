@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AssemblyName>TYR_DeClutterer</AssemblyName>
     <LangVersion>latest</LangVersion>
-    <SPTarkovDir Condition="'$(SPTarkovDir)' == ''">$(HOME)/Games/SPTarkov</SPTarkovDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,42 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>$(SPTarkovDir)/BepInEx/core/0Harmony.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="spt-reflection">
-      <HintPath>$(SPTarkovDir)/BepInEx/plugins/spt/spt-reflection.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(SPTarkovDir)/EscapeFromTarkov_Data/Managed/Assembly-CSharp.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="BepInEx">
-      <HintPath>$(SPTarkovDir)/BepInEx/core/BepInEx.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Comfort">
-      <HintPath>$(SPTarkovDir)/EscapeFromTarkov_Data/Managed/Comfort.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>$(SPTarkovDir)/EscapeFromTarkov_Data/Managed/UnityEngine.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(SPTarkovDir)/EscapeFromTarkov_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>$(SPTarkovDir)/EscapeFromTarkov_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>$(SPTarkovDir)/EscapeFromTarkov_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+    <PackageReference Include="SPT.ReferenceAssemblies" Version="1.0.0-spt4.0.13" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
   </ItemGroup>
 
 </Project>
