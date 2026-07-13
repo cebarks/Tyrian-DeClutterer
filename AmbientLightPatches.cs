@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Aki.Reflection.Patching;
-using Aki.Reflection.Utils;
+using SPT.Reflection.Patching;
+using SPT.Reflection.Utils;
 using EFT.Weather;
 using HarmonyLib;
 
@@ -47,39 +47,23 @@ namespace Framesaver
             return false;
         }
     }
-    class CloudsControllerDelayUpdatesPatch : ModulePatch
-    {
-        protected override MethodBase GetTargetMethod()
-        {
-            return typeof(CloudsController).GetMethod("LateUpdate", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-        }
-        [PatchPrefix]
-        public static bool Prefix()
-        {
-            return false;
-        }
-    }
     public class WeatherLateUpdatePatch : ModulePatch
     {
-        private static MethodInfo _updateClass1707Method;
         private static MethodInfo _method_4WeatherControllerMethod;
         public static bool everyOtherLateUpdate = false;
         protected override MethodBase GetTargetMethod()
         {
-            Type class1707Type = PatchConstants.EftTypes.Single(x => x.Name == "Class1707");
-            _updateClass1707Method = AccessTools.Method(class1707Type, "Update");
             _method_4WeatherControllerMethod = AccessTools.Method(typeof(WeatherController), "method_4");
             return AccessTools.Method(typeof(WeatherController), "LateUpdate");
         }
 
         [PatchPrefix]
-        public static bool PatchPrefix(WeatherController __instance, object ___class1707_0, ToDController ___TimeOfDayController)
+        public static bool PatchPrefix(WeatherController __instance, ToDController ___TimeOfDayController)
         {
             everyOtherLateUpdate = !everyOtherLateUpdate;
             if (everyOtherLateUpdate)
             {
                 ___TimeOfDayController.Update();
-                _updateClass1707Method.Invoke(___class1707_0, null);
                 _method_4WeatherControllerMethod.Invoke(__instance, null);
             }
             return false;
